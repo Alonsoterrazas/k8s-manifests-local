@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: 'git@github.com:Alonsoterrazas/k8s-manifests-local.git' # La URL de tu repo
     targetRevision: main
-    path: manifests/my-python-app # <-- Apunta a los manifiestos de K8s
+    path: manifests/ # <-- Apunta a los manifiestos de K8s
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default # <-- Despliega los recursos en el namespace 'default'
