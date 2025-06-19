@@ -1,0 +1,21 @@
+# applications/my-python-app.yml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: python-app # El nombre de esta aplicación específica
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: 'git@github.com:Alonsoterrazas/k8s-manifests-local.git' # La URL de tu repo
+    targetRevision: main
+    path: manifests/my-python-app # <-- Apunta a los manifiestos de K8s
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default # <-- Despliega los recursos en el namespace 'default'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
