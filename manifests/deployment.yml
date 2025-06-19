@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: python-app-container
-          image: alonsoterrazas9/python-app@sha256:539c756e0d60fc65a06af20d1c655ef5fcc0d8bad6d2ebc94f7f993dd7a22432
+          image: alonsoterrazas9/python-app@sha256:39e20f2d77acb22f369770db92ad2716c3dced63dcbabb5c4b72a40b8fd050e2
           resources:
             limits:
               memory: "128Mi"
