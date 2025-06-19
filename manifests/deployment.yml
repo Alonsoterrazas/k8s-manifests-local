@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: cluster-local
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: python-app
