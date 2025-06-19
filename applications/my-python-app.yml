@@ -2,12 +2,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: python-app # El nombre de esta aplicación específica
+  name: my-python-app # El nombre de esta aplicación específica
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: 'ssh://git@github.com:Alonsoterrazas/k8s-manifests-local.git' # La URL de tu repo
+    repoURL: 'git@github.com:Alonsoterrazas/k8s-manifests-local.git' # La URL de tu repo
     targetRevision: main
     path: manifests # <-- Apunta a los manifiestos de K8s
   destination:
