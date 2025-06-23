@@ -25,10 +25,10 @@ spec:
             - name: DB_USER
               valueFrom:
                 secretKeyRef:
-                  name: my-app-credential
+                  name: my-app-credentials
                   key: username
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: my-app-credential
+                  name: my-app-credentials
                   key: password
