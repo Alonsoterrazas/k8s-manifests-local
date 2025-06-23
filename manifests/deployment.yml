@@ -21,3 +21,14 @@ spec:
               cpu: "500m"
           ports:
             - containerPort: 5000
+          env:
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: my-app-credential
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: my-app-credential
+                  key: password
