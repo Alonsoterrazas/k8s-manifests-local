@@ -1,4 +1,4 @@
-# applications/monitoring-stack.yml
+# applications/monitoring-stack.yml (La versión correcta para la reinstalación)
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -9,22 +9,14 @@ spec:
   source:
     repoURL: 'https://prometheus-community.github.io/helm-charts'
     chart: kube-prometheus-stack
-    targetRevision: '58.1.0' # O la versión que desees usar
+    targetRevision: '58.1.0'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: monitoring
-  # --- SECCIÓN CRÍTICA ---
-  # Esta sección es la clave para la solución.
   syncOptions:
     - CreateNamespace=true
-    # Usa 'replace' en lugar de 'apply' para evitar el error de anotación "Too long".
-
     - Replace=true
-  # Opcional: Deshabilita la sincronización automática temporalmente para tener control
-  syncPolicy: {}
-  # Cuando todo funcione, puedes volver a poner tu syncPolicy anterior:
-
-# syncPolicy:
-#   automated:
-#     prune: true
-#     selfHeal: true
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
