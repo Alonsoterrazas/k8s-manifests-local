@@ -15,6 +15,18 @@ spec:
     namespace: monitoring
   helm:
     skipCrds:
+  values: |
+    # Solución para Problema #1: Asegurarnos de que Grafana esté habilitado
+    grafana:
+      enabled: true
+
+    # Solución para Problema #2: Deshabilitar el monitoreo de componentes inaccesibles en Minikube
+    kubeControllerManager:
+      enabled: false
+    kubeEtcd:
+      enabled: false
+    kubeScheduler:
+      enabled: false
   ignoreDifferences:
     - group: "apiextensions.k8s.io"
       kind: "CustomResourceDefinition"
