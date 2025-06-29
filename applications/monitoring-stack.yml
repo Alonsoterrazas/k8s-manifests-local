@@ -14,7 +14,16 @@ spec:
     server: 'https://kubernetes.default.svc'
     namespace: monitoring
   helm:
-    skipCrds: true
+    skipCrds:
+  ignoreDifferences:
+    - group: "apiextensions.k8s.io"
+      kind: "CustomResourceDefinition"
+      # Ignoramos cualquier cambio en estas secciones de los CRDs
+
+      jsonPointers:
+        - /spec
+        - /metadata/annotations
+        - /metadata/labels
   syncOptions:
     - CreateNamespace=true
     - Replace=true
