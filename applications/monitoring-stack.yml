@@ -13,6 +13,8 @@ spec:
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: monitoring
+  helm:
+    skipCrds: true
   syncOptions:
     - CreateNamespace=true
     - Replace=true
