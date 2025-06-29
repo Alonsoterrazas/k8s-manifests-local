@@ -7,7 +7,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/Alonsoterrazas/k8s-manifests-local.git' # La URL de tu repo
+    repoURL: 'git@github.com:Alonsoterrazas/k8s-manifests-local.git' # La URL de tu repo
     targetRevision: main
     path: manifests # <-- Apunta a los manifiestos de K8s
   destination:
