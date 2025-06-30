@@ -1,4 +1,4 @@
-# applications/monitoring-stack.yml (La versión correcta para la reinstalación)
+# monitoring-stack.yml (CORREGIDO)
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -13,14 +13,12 @@ spec:
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: monitoring
+  # --- BLOQUE HELM EN LA POSICIÓN CORRECTA ---
   helm:
     skipCrds: true
     values: |
-      # Solución para Problema #1: Asegurarnos de que Grafana esté habilitado
       grafana:
         enabled: true
-
-      # Solución para Problema #2: Deshabilitar el monitoreo de componentes inaccesibles en Minikube
       kubeControllerManager:
         enabled: false
       kubeEtcd:
@@ -30,8 +28,6 @@ spec:
   ignoreDifferences:
     - group: "apiextensions.k8s.io"
       kind: "CustomResourceDefinition"
-      # Ignoramos cualquier cambio en estas secciones de los CRDs
-
       jsonPointers:
         - /spec
         - /metadata/annotations
